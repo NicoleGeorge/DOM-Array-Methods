@@ -4,3 +4,17 @@ const doubleBtn = document.getElementById('double');
 const showMillionairesBtn = document.getElementById('show-millionaires');
 const sortBtn = document.getElementById('sort');
 const calculateWealthBtn = document.getElementById('calculate-wealth');
+
+let data = [];
+
+//fetch random user and add money value to them
+getRandomUser();
+getRandomUser();
+getRandomUser();
+
+async function getRandomUser() {
+  const res = await fetch('https://randomuser.me/api');
+  const data = await res.json();
+
+  console.log(data);
+}
