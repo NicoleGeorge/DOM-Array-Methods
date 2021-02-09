@@ -45,8 +45,15 @@ function addData(object) {
   updateDOM();
 }
 
-// update DOM with new users
+// sort users based on wealth
 
+function sortByRichest() {
+  data.sort((a, b) => b.money - a.money);
+
+  updateDOM();
+}
+
+// update DOM with new users
 function updateDOM(providedData = data) {
   // clear main div instead of adding to it
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
@@ -54,7 +61,9 @@ function updateDOM(providedData = data) {
   providedData.forEach((item) => {
     const element = document.createElement('div');
     element.classList.add('person');
-    element.innerHTML = `<strong>${item.name}</strong> ${item.money}`;
+    element.innerHTML = `<strong>${item.name}</strong> ${formatMoney(
+      item.money
+    )}`;
     main.appendChild(element);
   });
 }
@@ -69,3 +78,4 @@ function formatMoney(number) {
 
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
+sortBtn.addEventListener('click', sortByRichest);
